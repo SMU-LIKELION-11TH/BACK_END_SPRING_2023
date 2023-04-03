@@ -25,10 +25,10 @@
 <br/><br/>
 ## 💻 백엔드(Spring) 운영진 💻
 
-|| ||
+|운영진|운영진|운영진|
 |:---:|:---:|:---:|
-|최세민|임재훈|김현우|
 |<img src="https://file.notion.so/f/s/3cf9c79b-08d2-4f9d-aa2d-7547d44d98f1/Untitled.png?id=f09cb23c-a3fd-4a19-b2db-95c42ee7eca8&table=block&spaceId=614d45e5-b13e-4290-9662-287c2484d7a2&expirationTimestamp=1680604832763&signature=hsrreKDGIRa2UG9gMApu5anv15AEdKWhYlMjej_txfs&downloadName=Untitled.png" width="120" height="120"/> |<img src="https://user-images.githubusercontent.com/87347699/229526272-7dbcf7f2-f2df-465b-9946-587e8609635c.jpg" width="120" height="120"/> |<img src="https://file.notion.so/f/s/7c3ab893-3c95-4564-ab93-bc395b52764d/IMG_7121.png?id=8c2d40f6-333a-40c3-8a0b-e6859c3a6fc0&table=block&spaceId=614d45e5-b13e-4290-9662-287c2484d7a2&expirationTimestamp=1680604785832&signature=j1mlNMcFmlsrv4w4nDXlwO9f2frmlPt5n9JveDsilX8&downloadName=IMG_7121.PNG.png" width="120" height="120"/> |
+|최세민|임재훈|김현우|
 
 
  ### 🗣 질문이 있다면 ?? 백엔드 단톡방으로 !! <br/>
