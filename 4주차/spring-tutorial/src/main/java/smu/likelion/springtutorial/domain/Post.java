@@ -1,4 +1,4 @@
-package smu.likelion.springtutorial.dto;
+package smu.likelion.springtutorial.domain;
 
 import jakarta.persistence.*;
 import lombok.Getter;

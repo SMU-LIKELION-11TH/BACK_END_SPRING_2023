@@ -1,7 +1,6 @@
 package smu.likelion.springtutorial.service;
 
-import org.springframework.http.ResponseEntity;
-import smu.likelion.springtutorial.dto.Post;
+import smu.likelion.springtutorial.domain.Post;
 
 import java.util.Optional;
 

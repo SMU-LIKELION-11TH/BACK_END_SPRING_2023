@@ -2,7 +2,7 @@ package smu.likelion.springtutorial.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import smu.likelion.springtutorial.dto.Post;
+import smu.likelion.springtutorial.domain.Post;
 import smu.likelion.springtutorial.repository.PostRepository;
 
 import java.util.Optional;
@@ -13,15 +13,15 @@ public class PostServiceImpl implements PostService{
     private PostRepository postRepository;
 
     @Override
-    public Post save(Post product) {
+    public Post save(Post post) {
         try {
             return postRepository
                     .save(
                             new Post(
-                                    product.getPost_id(),
-                                    product.getUser_id(),
-                                    product.getTitle(),
-                                    product.getContent()
+                                    post.getPost_id(),
+                                    post.getUser_id(),
+                                    post.getTitle(),
+                                    post.getContent()
                             )
                     );
         } catch (Exception e) {
@@ -34,9 +34,9 @@ public class PostServiceImpl implements PostService{
     @Override
     public Optional<Post> findById(Long id) {
         try {
-            Optional<Post> productData = postRepository.findById(id);
-            if (productData.isPresent()) {
-                return productData;
+            Optional<Post> postData = postRepository.findById(id);
+            if (postData.isPresent()) {
+                return postData;
             }
         } catch(Exception e) {
             e.printStackTrace();
@@ -45,16 +45,16 @@ public class PostServiceImpl implements PostService{
     }
 
     @Override
-    public Post update(Long id, Post product) {
+    public Post update(Long id, Post post) {
 
         try {
             Optional<Post> postData = postRepository.findById(id);
             if (postData.isPresent()) {
                 Post _post = postData.get();
-                _post.setPost_id(product.getPost_id());
-                _post.setUser_id(product.getUser_id());
-                _post.setTitle(product.getTitle());
-                _post.setContent(product.getTitle());
+                _post.setPost_id(post.getPost_id());
+                _post.setUser_id(post.getUser_id());
+                _post.setTitle(post.getTitle());
+                _post.setContent(post.getTitle());
                 postRepository.save(_post);
                 return _post;
             } else {
