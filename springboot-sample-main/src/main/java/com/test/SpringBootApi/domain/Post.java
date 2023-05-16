@@ -1,8 +1,18 @@
 package com.test.SpringBootApi.domain;
 
+import com.test.SpringBootApi.dto.PostResponseDTO;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 import javax.persistence.*;
 
 @Entity
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 @Table(name="post")
 public class Post {
     @Id
@@ -15,34 +25,16 @@ public class Post {
     @Column(name = "content")
     private String content;
 
-    public Post() {}
-
     public Post(String title, String content) {
         this.title = title;
         this.content = content;
     }
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public String getContent() {
-        return content;
-    }
-
-    public void setContent(String content) {
-        this.content = content;
+    public PostResponseDTO toPostResponseDTO(){
+        return new PostResponseDTO(
+                id = id,
+                title = title,
+                content = content
+        );
     }
 }
