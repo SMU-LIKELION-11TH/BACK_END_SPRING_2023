@@ -1,6 +1,7 @@
 package com.example.board.service;
 
 import com.example.board.domain.Board;
+import com.example.board.dto.BoardReturnDTO;
 import com.example.board.repository.BoardRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -48,19 +49,33 @@ public class BoardServiceImpl implements BoardService{
         return null;
     }
 
+//    @Override
+//    public Optional<Board> findById(Long id) {
+//        try{
+//            Optional<Board> boardData = boardRepository.findById(id);
+//            if (boardData.isPresent()){
+//                return boardData;
+//            }
+//        }catch (Exception e){
+//            e.printStackTrace();
+//        }
+//        return Optional.empty();
+//    }
+
     @Override
-    public Optional<Board> findById(Long id) {
+    public BoardReturnDTO findById(Long id) {
         try{
             Optional<Board> boardData = boardRepository.findById(id);
             if (boardData.isPresent()){
-                return boardData;
+                Board board = boardData.get();
+                BoardReturnDTO boardReturnDTO = new BoardReturnDTO(board);
+                return boardReturnDTO;
             }
         }catch (Exception e){
             e.printStackTrace();
         }
-        return Optional.empty();
+        return null;
     }
-
     @Override
     public void delete(Long id) {
         try {

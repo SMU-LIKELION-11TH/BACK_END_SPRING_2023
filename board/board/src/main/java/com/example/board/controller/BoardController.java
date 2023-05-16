@@ -1,6 +1,7 @@
 package com.example.board.controller;
 
 import com.example.board.domain.Board;
+import com.example.board.dto.BoardReturnDTO;
 import com.example.board.service.BoardServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -18,7 +19,7 @@ public class BoardController {
 
 
     @GetMapping("/posts/{id}")
-    public ResponseEntity<Optional<Board>> getBoardById (@PathVariable("id") long id){
+    public ResponseEntity<BoardReturnDTO> getBoardById (@PathVariable("id") long id){
         try {
             return ResponseEntity.ok(boardService.findById(id));
         }catch (Exception e){
