@@ -1,8 +1,12 @@
 package com.example.board.domain;
 
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
 
 
+@Getter
+@Setter
 @Entity
 @Table(name="boards")
 public class Board {
@@ -24,27 +28,4 @@ public class Board {
         this.writer = writer;
     }
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public String getWriter() {
-        return writer;
-    }
-
-    public void setWriter(String writer) {
-        this.writer = writer;
-    }
 }
