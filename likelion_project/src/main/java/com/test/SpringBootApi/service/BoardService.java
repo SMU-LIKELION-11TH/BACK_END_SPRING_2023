@@ -9,25 +9,48 @@ import org.springframework.stereotype.Service;
 import java.util.Optional;
 
 @Service
+
 public class BoardService {
     @Autowired
     private BoardRepository boardRepository;
-    public BoardDto addBoard(BoardDto boardDto){
+    public BoardEntity addBoard(BoardDto boardDto){
         try{
-            return boardRepository.save(boardDto);
+           return boardRepository.save(boardDto.ToEntity());
         }catch(Exception e){
             e.printStackTrace();
         }
         return null;
     }
-    public Optional<BoardDto>findById(Long id){
+    public Object findById(Long id){
         try{
-            Optional<BoardDto>boardDto = boardRepository.findById(id);
-            if(boardDto.isPresent()){
-                return boardDto;
+            Optional<BoardEntity> boardEntity = boardRepository.findById(id);
+            if(boardEntity.isPresent()){
+                return boardEntity.get().getId();
             }
         }catch (Exception e){
             e.printStackTrace();
         }return null;
+    }
+
+    public Object deleteBoard(long id){
+        Optional<BoardEntity>boardEntity = boardRepository.findById(id);
+        try{
+            boardRepository.delete(boardEntity.get());
+            return boardEntity.get().getId();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return null;
+    }
+    public Object updateBoard(long id, BoardDto boardDto){
+        Optional<BoardEntity> boardEntity = boardRepository.findById(id);
+        if(boardEntity.isPresent()){
+            BoardEntity boardEntity1 = boardEntity.get();
+            boardEntity1.setTitle(boardDto.getTitle());
+            boardEntity1.setBoardName(boardDto.getContent());
+            BoardEntity updateEntity = boardRepository.save(boardEntity1);
+            return new BoardDto(updateEntity);
+        }
+        return null;
     }
 }

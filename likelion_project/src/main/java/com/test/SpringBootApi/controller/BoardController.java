@@ -25,10 +25,31 @@ public class BoardController {
         }
         return null;
     }
-    @GetMapping("/posts/")
-    public ResponseEntity<Optional<BoardDto>> findById(@RequestParam(name="id") Long id){
-        return ResponseEntity.ok(boardService.findById(id));
+    @GetMapping("/posts/findBoard/{id}")
+    public ResponseEntity<?> findById(@RequestParam(name="id") Long id){
+        Optional<BoardDto>boardDto = (Optional<BoardDto>) boardService.findById(id);
+        if(boardDto.isPresent()){
+            return ResponseEntity.ok().body(boardDto.get());
+        }else{
+            return ResponseEntity.notFound().build();
+        }
     }
-
-
+    @DeleteMapping("posts/deleteBoard{id}")
+    public ResponseEntity<?> deleteBoard(@PathVariable("id")long id){
+        try{
+            boardService.deleteBoard(id);
+            ResponseEntity.ok();
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        return null;
+    }
+    @PutMapping("posts/updateBoard/{id}")
+    public ResponseEntity<BoardDto> updateBoard(@PathVariable long id, @RequestBody BoardDto boardDto){
+        BoardDto updateBoard = (BoardDto) boardService.updateBoard(id,boardDto);
+        if(updateBoard!=null){
+            return ResponseEntity.ok().body(updateBoard);
+        }
+        return ResponseEntity.notFound().build();
+    }
 }

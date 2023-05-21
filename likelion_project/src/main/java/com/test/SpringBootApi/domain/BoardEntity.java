@@ -1,10 +1,16 @@
 package com.test.SpringBootApi.domain;
 
-import org.springframework.boot.autoconfigure.kafka.KafkaProperties;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
 @Entity
+@Builder
+@AllArgsConstructor
+@Data
 public class BoardEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -18,7 +24,9 @@ public class BoardEntity {
         this.title = title;
         this.content = content;
     }
-    public Long getId(){return id;}
+    public long getId(){
+        return id;
+    }
     public void setId(Long id){this.id = id;}
     public String getBoardName() {
         return title;
