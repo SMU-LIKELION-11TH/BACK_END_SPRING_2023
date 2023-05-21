@@ -1,5 +1,6 @@
 package com.test.SpringBootApi.controller;
 
+import com.test.SpringBootApi.dto.NoticeBoardReturnDto;
 import com.test.SpringBootApi.service.NoticeBoardServiceImpl;
 import com.test.SpringBootApi.domain.NoticeBoard;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,6 +8,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Optional;
 
 @CrossOrigin("*")
@@ -28,10 +30,17 @@ public class NoticeBoardController {
         return null;
     }
 
+//    @GetMapping("/boards")
+//    public ResponseEntity<Optional<NoticeBoard>> getNoticeBoardByIdQuery(
+//            @RequestParam(name= "id") Long id){
+//        return ResponseEntity.ok(boardService.findById(id));
+//    }
+
     @GetMapping("/boards")
-    public ResponseEntity<Optional<NoticeBoard>> getNoticeBoardByIdQuery(
-            @RequestParam(name= "id") Long id){
-        return ResponseEntity.ok(boardService.findById(id));
+    public ResponseEntity<List<NoticeBoardReturnDto>> getAllNoticeBoard(){
+        List<NoticeBoardReturnDto> noticeBoardReturDtoiList = boardService.findAll();
+
+        return ResponseEntity.ok(noticeBoardReturDtoiList);
     }
 
     @PostMapping("/boards")

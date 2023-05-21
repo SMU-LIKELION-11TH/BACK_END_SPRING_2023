@@ -4,6 +4,12 @@ plugins {
 	id 'io.spring.dependency-management' version '1.0.15.RELEASE'
 }
 
+configurations {
+	compileOnly {
+		extendsFrom annotationProcessor
+	}
+}
+
 group = 'com.test'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '17'
@@ -18,6 +24,8 @@ dependencies {
 	implementation 'org.jetbrains:annotations:24.0.0'
 	runtimeOnly 'com.h2database:h2'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	implementation 'org.projectlombok:lombok'
+	annotationProcessor 'org.projectlombok:lombok'
 }
 
 tasks.named('test') {

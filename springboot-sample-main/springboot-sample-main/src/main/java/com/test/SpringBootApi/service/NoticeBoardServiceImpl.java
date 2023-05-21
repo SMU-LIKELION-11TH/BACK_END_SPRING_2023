@@ -1,11 +1,16 @@
 package com.test.SpringBootApi.service;
 
 import com.test.SpringBootApi.domain.NoticeBoard;
+import com.test.SpringBootApi.dto.NoticeBoardRequestDto;
+import com.test.SpringBootApi.dto.NoticeBoardReturnDto;
 import com.test.SpringBootApi.respository.NoticeBoardRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class NoticeBoardServiceImpl implements NoticeBoardService {
@@ -40,6 +45,19 @@ public class NoticeBoardServiceImpl implements NoticeBoardService {
         } catch(Exception e) {
             e.printStackTrace();
         }
+        return null;
+    }
+
+    @Override
+    public List<NoticeBoardReturnDto> findAll() {
+        List<NoticeBoard> noticeBoardList = boardRepository.findAll();
+        List<NoticeBoardReturnDto> noticeBoardReturnDtoList = new ArrayList<>();
+
+        return noticeBoardList.stream().map(NoticeBoardReturnDto::new).collect(Collectors.toList());
+    }
+
+    @Override
+    public NoticeBoardReturnDto update(Long id, NoticeBoardRequestDto noticeBoardRequestDto) {
         return null;
     }
 
