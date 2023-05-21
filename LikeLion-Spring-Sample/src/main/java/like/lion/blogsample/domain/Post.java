@@ -21,8 +21,12 @@ public class Post {
     @Column(nullable = false)
     private String content;
 
-    public Post(Long id, String title, String content) {
-        this.id = id;
+    public Post(String title, String content) {
+        this.title = title;
+        this.content = content;
+    }
+
+    public void update(String title, String content) {
         this.title = title;
         this.content = content;
     }
