@@ -1,4 +1,4 @@
-package smu.likelion.springtutorial.entity;
+package smu.likelion.springtutorial.domain;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -24,5 +24,10 @@ public class Post {
 
     @Column(name = "contents")
     private String contents;
+
+    public Post(String title, String contents){
+        this.title = title;
+        this.contents = contents;
+    }
 
 }
