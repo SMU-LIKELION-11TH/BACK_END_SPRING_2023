@@ -16,7 +16,7 @@ public class ProductRepositoryCustomImpl implements ProductRepositoryCustom{
     EntityManager entityManager;
     @Override
     public List<Product> findByProductName(String name) {
-        List<Product> productList = entityManager.createQuery("SELECT p FROM Product AS p",Product.class).getResultList();
+        List<Product> productList = entityManager.createQuery("SELECT p FROM Product AS p where p.productName="+name,Product.class).getResultList();
         return productList;
     }
 }
